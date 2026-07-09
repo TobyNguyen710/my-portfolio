@@ -11,8 +11,11 @@ export default function Hero() {
           {profile.name}
         </h1>
         <p className="text-xl text-slate-600 dark:text-slate-400 mb-6">{profile.title}</p>
-        <p className="text-slate-600 dark:text-slate-400 max-w-xl mx-auto mb-8">
+        <p className="text-slate-600 dark:text-slate-400 max-w-xl mx-auto mb-2">
           {profile.tagline}
+        </p>
+        <p className="text-sm text-slate-500 dark:text-slate-500 mb-8">
+          {profile.phone} · {profile.email}
         </p>
         <div className="flex items-center justify-center gap-4 flex-wrap">
           <a

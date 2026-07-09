@@ -20,22 +20,37 @@ export default function Projects() {
 
   return (
     <Section id="projects" title="Projects">
-      <div className="grid gap-6 sm:grid-cols-2">
+      <div className="space-y-6">
         {projects.map((project) => (
-          <a
+          <div
             key={project.title}
-            href={project.link}
-            target="_blank"
-            rel="noreferrer"
-            className="block rounded-xl border border-slate-200 dark:border-slate-800 p-5 text-left hover:border-indigo-400 dark:hover:border-indigo-600 transition-colors"
+            className="rounded-xl border border-slate-200 dark:border-slate-800 p-5 text-left"
           >
-            <h3 className="font-semibold text-slate-900 dark:text-slate-100 mb-1">
-              {project.title}
-            </h3>
-            <p className="text-sm text-slate-600 dark:text-slate-400 mb-3">
-              {project.description}
-            </p>
-            <div className="flex flex-wrap gap-1.5">
+            <div className="flex flex-wrap items-baseline justify-between gap-x-3">
+              <h3 className="font-semibold text-slate-900 dark:text-slate-100">
+                {project.title}
+              </h3>
+              {project.period && (
+                <span className="text-sm text-slate-500 dark:text-slate-500">{project.period}</span>
+              )}
+            </div>
+            {project.location && (
+              <p className="text-sm text-slate-500 dark:text-slate-500 mt-0.5">{project.location}</p>
+            )}
+
+            {project.bullets?.length > 0 ? (
+              <ul className="list-disc list-outside pl-5 mt-2 space-y-1">
+                {project.bullets.map((bullet, i) => (
+                  <li key={i} className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
+                    {bullet}
+                  </li>
+                ))}
+              </ul>
+            ) : (
+              <p className="text-sm text-slate-600 dark:text-slate-400 mt-2">{project.description}</p>
+            )}
+
+            <div className="flex flex-wrap items-center gap-3 mt-3">
               {project.tech?.map((t) => (
                 <span
                   key={t}
@@ -44,8 +59,28 @@ export default function Projects() {
                   {t}
                 </span>
               ))}
+              {project.link && (
+                <a
+                  href={project.link}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="text-sm text-indigo-500 hover:underline underline-offset-4 ml-auto"
+                >
+                  View project →
+                </a>
+              )}
+              {project.secondaryLink && (
+                <a
+                  href={project.secondaryLink.url}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="text-sm text-indigo-500 hover:underline underline-offset-4"
+                >
+                  {project.secondaryLink.label} →
+                </a>
+              )}
             </div>
-          </a>
+          </div>
         ))}
       </div>
     </Section>

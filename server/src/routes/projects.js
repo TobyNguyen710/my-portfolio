@@ -10,11 +10,21 @@ router.get('/', async (req, res) => {
 })
 
 router.post('/', requireAdminKey, async (req, res) => {
-  const { title, description, tech, link, order } = req.body
-  if (!title || !description) {
-    return res.status(400).json({ error: 'title and description are required' })
+  const { title, description, bullets, period, location, tech, link, secondaryLink, order } = req.body
+  if (!title || (!description && !(bullets && bullets.length))) {
+    return res.status(400).json({ error: 'title and (description or bullets) are required' })
   }
-  const project = await Project.create({ title, description, tech, link, order })
+  const project = await Project.create({
+    title,
+    description,
+    bullets,
+    period,
+    location,
+    tech,
+    link,
+    secondaryLink,
+    order,
+  })
   res.status(201).json(project)
 })
 

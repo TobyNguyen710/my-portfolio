@@ -13,7 +13,16 @@ export default function Experience() {
               </h3>
               <span className="text-sm text-slate-500 dark:text-slate-500">{job.period}</span>
             </div>
-            <p className="text-slate-600 dark:text-slate-400 mt-1">{job.description}</p>
+            {job.location && (
+              <p className="text-sm text-slate-500 dark:text-slate-500 mt-0.5">{job.location}</p>
+            )}
+            <ul className="list-disc list-outside pl-5 mt-2 space-y-1">
+              {job.bullets.map((bullet, i) => (
+                <li key={i} className="text-slate-600 dark:text-slate-400 leading-relaxed">
+                  {bullet}
+                </li>
+              ))}
+            </ul>
           </div>
         ))}
       </div>
@@ -28,7 +37,40 @@ export default function Experience() {
                   <p className="font-medium text-slate-800 dark:text-slate-200">{edu.school}</p>
                   <span className="text-sm text-slate-500 dark:text-slate-500">{edu.period}</span>
                 </div>
-                <p className="text-slate-600 dark:text-slate-400">{edu.degree}</p>
+                <p className="text-slate-600 dark:text-slate-400">
+                  {edu.degree}
+                  {edu.details ? ` · ${edu.details}` : ''}
+                </p>
+                {edu.bullets?.length > 0 && (
+                  <ul className="list-disc list-outside pl-5 mt-2 space-y-1">
+                    {edu.bullets.map((bullet, i) => (
+                      <li key={i} className="text-slate-600 dark:text-slate-400 leading-relaxed">
+                        {bullet}
+                      </li>
+                    ))}
+                  </ul>
+                )}
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
+
+      {profile.additional?.length > 0 && (
+        <div className="mt-10">
+          <h3 className="font-semibold text-slate-900 dark:text-slate-100 mb-4">
+            Additional Experience
+          </h3>
+          <div className="space-y-3">
+            {profile.additional.map((item) => (
+              <div key={item.title} className="border-l-2 border-slate-200 dark:border-slate-800 pl-5">
+                <div className="flex flex-wrap items-baseline justify-between gap-x-3">
+                  <p className="font-medium text-slate-800 dark:text-slate-200">
+                    {item.title}
+                  </p>
+                  <span className="text-sm text-slate-500 dark:text-slate-500">{item.period}</span>
+                </div>
+                <p className="text-slate-600 dark:text-slate-400">{item.description}</p>
               </div>
             ))}
           </div>
