@@ -1,9 +1,9 @@
 // Edit this file with your real info — everything on the page is driven from here.
 export const profile = {
   name: 'Toby Nguyen',
-  title: 'Computer Science Student',
+  title: 'Software Developer | Web Developer | Game Developer',
   tagline:
-    'Computer Science student graduating June 2026 with hands-on experience in software development, system troubleshooting, and web development.',
+    'Computer Science student graduating June 2026, building full-stack web apps, computer vision systems, and games in Unity. Interested in roles that let me keep working across that range.',
   location: 'Calgary, AB, Canada',
   phone: '+1 (902) 916-6193',
   email: 'ductoby2003@gmail.com',
