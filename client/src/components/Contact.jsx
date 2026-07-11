@@ -3,8 +3,9 @@ import Section from './Section'
 import { profile } from '../data/profile'
 
 const API_URL = import.meta.env.VITE_API_URL || ''
+const ACCENT = '#34d399'
 
-export default function Contact({ variant = 'light' }) {
+export default function Contact() {
   const [form, setForm] = useState({ name: '', email: '', message: '' })
   const [status, setStatus] = useState('idle') // idle | sending | sent | error
 
@@ -25,11 +26,17 @@ export default function Contact({ variant = 'light' }) {
     }
   }
 
+  const inputStyle = {
+    borderColor: 'var(--panel-border)',
+    color: 'var(--text)',
+    backgroundColor: 'var(--pill-bg)',
+  }
+
   return (
-    <Section id="contact" title="Get in touch" variant={variant}>
-      <p className="mb-6" style={{ color: 'var(--sec-muted)' }}>
+    <Section id="contact" title="Get in touch" index={4} accent={ACCENT}>
+      <p className="mb-6" style={{ color: 'var(--muted)' }}>
         Reach me directly at{' '}
-        <a href={`mailto:${profile.email}`} className="hover:underline" style={{ color: 'var(--sec-link)' }}>
+        <a href={`mailto:${profile.email}`} className="font-bold hover:underline" style={{ color: ACCENT }}>
           {profile.email}
         </a>{' '}
         or send a message below.
@@ -43,8 +50,8 @@ export default function Contact({ variant = 'light' }) {
             placeholder="Your name"
             value={form.name}
             onChange={(e) => setForm({ ...form, name: e.target.value })}
-            className="rounded-lg border bg-transparent px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500"
-            style={{ borderColor: 'var(--sec-border)', color: 'var(--sec-text)' }}
+            className="rounded-lg border px-4 py-2.5 text-sm focus:outline-none focus:ring-2"
+            style={{ ...inputStyle, '--tw-ring-color': ACCENT }}
           />
           <input
             required
@@ -52,8 +59,8 @@ export default function Contact({ variant = 'light' }) {
             placeholder="Your email"
             value={form.email}
             onChange={(e) => setForm({ ...form, email: e.target.value })}
-            className="rounded-lg border bg-transparent px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500"
-            style={{ borderColor: 'var(--sec-border)', color: 'var(--sec-text)' }}
+            className="rounded-lg border px-4 py-2.5 text-sm focus:outline-none focus:ring-2"
+            style={{ ...inputStyle, '--tw-ring-color': ACCENT }}
           />
         </div>
         <textarea
@@ -62,21 +69,22 @@ export default function Contact({ variant = 'light' }) {
           placeholder="Message"
           value={form.message}
           onChange={(e) => setForm({ ...form, message: e.target.value })}
-          className="w-full rounded-lg border bg-transparent px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500"
-          style={{ borderColor: 'var(--sec-border)', color: 'var(--sec-text)' }}
+          className="w-full rounded-lg border px-4 py-2.5 text-sm focus:outline-none focus:ring-2"
+          style={{ ...inputStyle, '--tw-ring-color': ACCENT }}
         />
         <button
           type="submit"
           disabled={status === 'sending'}
-          className="px-5 py-2.5 rounded-full bg-indigo-600 text-white text-sm font-medium hover:bg-indigo-500 transition-colors disabled:opacity-50"
+          className="btn-game border-b-4 px-5 py-2.5 rounded-lg text-sm font-bold disabled:opacity-50"
+          style={{ backgroundColor: ACCENT, color: '#0f1117', borderColor: '#059669' }}
         >
           {status === 'sending' ? 'Sending…' : 'Send message'}
         </button>
         {status === 'sent' && (
-          <p className="text-sm text-emerald-500">Thanks — your message has been sent!</p>
+          <p className="text-sm" style={{ color: ACCENT }}>Thanks — your message has been sent!</p>
         )}
         {status === 'error' && (
-          <p className="text-sm text-red-500">Something went wrong. Please email me directly instead.</p>
+          <p className="text-sm text-red-400">Something went wrong. Please email me directly instead.</p>
         )}
       </form>
     </Section>

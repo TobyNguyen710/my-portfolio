@@ -7,13 +7,13 @@ import Contact from './components/Contact'
 export default function App() {
   return (
     <div className="min-h-screen">
-      <Hero variant="light" />
-      <About variant="dark" />
-      <Experience variant="light" />
-      <Projects variant="dark" />
-      <Contact variant="light" />
-      <footer className="section-dark py-8 text-center text-sm">
-        Built with the MERN stack.
+      <Hero />
+      <About />
+      <Experience />
+      <Projects />
+      <Contact />
+      <footer className="py-8 px-6 text-center text-sm" style={{ color: 'var(--muted)' }}>
+        <span style={{ color: '#5eead4' }}>&gt;</span> built with the MERN stack
       </footer>
     </div>
   )

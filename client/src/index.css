@@ -1,29 +1,43 @@
 @import "tailwindcss";
 
+:root {
+  --bg: #0f1117;
+  --panel-border: #232733;
+  --text: #f1f1f4;
+  --muted: #9aa0ae;
+  --pill-bg: #1b1f2a;
+  --pill-text: #c7ccd6;
+}
+
 body {
   margin: 0;
+  background-color: var(--bg);
+  color: var(--text);
+  font-family: 'JetBrains Mono', ui-monospace, monospace;
+  background-image: radial-gradient(circle, #1c202b 1px, transparent 1px);
+  background-size: 22px 22px;
 }
 
-.section-light {
-  --sec-bg: #ffffff;
-  --sec-text: #0f172a;
-  --sec-muted: #475569;
-  --sec-border: #e2e8f0;
-  --sec-pill-bg: #f1f5f9;
-  --sec-pill-text: #334155;
-  --sec-link: #4f46e5;
-  background-color: var(--sec-bg);
-  color: var(--sec-text);
+.font-display {
+  font-family: 'Space Grotesk', ui-sans-serif, system-ui, sans-serif;
 }
 
-.section-dark {
-  --sec-bg: #0f172a;
-  --sec-text: #f8fafc;
-  --sec-muted: #cbd5e1;
-  --sec-border: #334155;
-  --sec-pill-bg: #1e293b;
-  --sec-pill-text: #e2e8f0;
-  --sec-link: #a5b4fc;
-  background-color: var(--sec-bg);
-  color: var(--sec-text);
+@keyframes blink {
+  50% {
+    opacity: 0;
+  }
+}
+
+.cursor-blink {
+  animation: blink 1s steps(2) infinite;
+}
+
+.btn-game {
+  border-bottom-width: 4px;
+  transition: transform 0.05s ease, border-bottom-width 0.05s ease;
+}
+
+.btn-game:active {
+  transform: translateY(3px);
+  border-bottom-width: 1px;
 }
