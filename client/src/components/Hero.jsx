@@ -1,20 +1,18 @@
 import { profile } from '../data/profile'
 
-export default function Hero() {
+export default function Hero({ variant = 'light' }) {
   return (
-    <header className="border-b border-slate-200 dark:border-slate-800">
+    <header className={`section-${variant}`}>
       <div className="mx-auto max-w-3xl px-6 py-24 text-center">
-        <p className="text-sm font-medium uppercase tracking-widest text-indigo-500 dark:text-indigo-400 mb-3">
+        <p className="text-sm font-medium uppercase tracking-widest mb-3" style={{ color: 'var(--sec-link)' }}>
           {profile.location}
         </p>
-        <h1 className="text-4xl sm:text-5xl font-bold text-slate-900 dark:text-slate-100 mb-3">
-          {profile.name}
-        </h1>
-        <p className="text-xl text-slate-600 dark:text-slate-400 mb-6">{profile.title}</p>
-        <p className="text-slate-600 dark:text-slate-400 max-w-xl mx-auto mb-2">
+        <h1 className="text-4xl sm:text-5xl font-bold mb-3">{profile.name}</h1>
+        <p className="text-xl mb-6" style={{ color: 'var(--sec-muted)' }}>{profile.title}</p>
+        <p className="max-w-xl mx-auto mb-2" style={{ color: 'var(--sec-muted)' }}>
           {profile.tagline}
         </p>
-        <p className="text-sm text-slate-500 dark:text-slate-500 mb-8">
+        <p className="text-sm mb-8" style={{ color: 'var(--sec-muted)' }}>
           {profile.phone} · {profile.email}
         </p>
         <div className="flex items-center justify-center gap-4 flex-wrap">
@@ -26,7 +24,8 @@ export default function Hero() {
           </a>
           <a
             href={profile.resumeUrl}
-            className="px-5 py-2.5 rounded-full border border-slate-300 dark:border-slate-700 text-slate-700 dark:text-slate-300 text-sm font-medium hover:border-indigo-400 transition-colors"
+            className="px-5 py-2.5 rounded-full border text-sm font-medium hover:border-indigo-400 transition-colors"
+            style={{ borderColor: 'var(--sec-border)' }}
           >
             Download Resume
           </a>
@@ -36,7 +35,8 @@ export default function Hero() {
               href={s.url}
               target="_blank"
               rel="noreferrer"
-              className="text-sm text-slate-500 dark:text-slate-400 hover:text-indigo-500 underline underline-offset-4"
+              className="text-sm underline underline-offset-4 hover:opacity-80"
+              style={{ color: 'var(--sec-muted)' }}
             >
               {s.label}
             </a>

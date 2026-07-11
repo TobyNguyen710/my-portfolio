@@ -4,7 +4,7 @@ import { profile } from '../data/profile'
 
 const API_URL = import.meta.env.VITE_API_URL || ''
 
-export default function Contact() {
+export default function Contact({ variant = 'light' }) {
   const [form, setForm] = useState({ name: '', email: '', message: '' })
   const [status, setStatus] = useState('idle') // idle | sending | sent | error
 
@@ -26,10 +26,10 @@ export default function Contact() {
   }
 
   return (
-    <Section id="contact" title="Get in touch">
-      <p className="text-slate-600 dark:text-slate-400 mb-6">
+    <Section id="contact" title="Get in touch" variant={variant}>
+      <p className="mb-6" style={{ color: 'var(--sec-muted)' }}>
         Reach me directly at{' '}
-        <a href={`mailto:${profile.email}`} className="text-indigo-500 hover:underline">
+        <a href={`mailto:${profile.email}`} className="hover:underline" style={{ color: 'var(--sec-link)' }}>
           {profile.email}
         </a>{' '}
         or send a message below.
@@ -43,7 +43,8 @@ export default function Contact() {
             placeholder="Your name"
             value={form.name}
             onChange={(e) => setForm({ ...form, name: e.target.value })}
-            className="rounded-lg border border-slate-300 dark:border-slate-700 bg-transparent px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500"
+            className="rounded-lg border bg-transparent px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500"
+            style={{ borderColor: 'var(--sec-border)', color: 'var(--sec-text)' }}
           />
           <input
             required
@@ -51,7 +52,8 @@ export default function Contact() {
             placeholder="Your email"
             value={form.email}
             onChange={(e) => setForm({ ...form, email: e.target.value })}
-            className="rounded-lg border border-slate-300 dark:border-slate-700 bg-transparent px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500"
+            className="rounded-lg border bg-transparent px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500"
+            style={{ borderColor: 'var(--sec-border)', color: 'var(--sec-text)' }}
           />
         </div>
         <textarea
@@ -60,7 +62,8 @@ export default function Contact() {
           placeholder="Message"
           value={form.message}
           onChange={(e) => setForm({ ...form, message: e.target.value })}
-          className="w-full rounded-lg border border-slate-300 dark:border-slate-700 bg-transparent px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500"
+          className="w-full rounded-lg border bg-transparent px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500"
+          style={{ borderColor: 'var(--sec-border)', color: 'var(--sec-text)' }}
         />
         <button
           type="submit"
@@ -70,14 +73,10 @@ export default function Contact() {
           {status === 'sending' ? 'Sending…' : 'Send message'}
         </button>
         {status === 'sent' && (
-          <p className="text-sm text-emerald-600 dark:text-emerald-400">
-            Thanks — your message has been sent!
-          </p>
+          <p className="text-sm text-emerald-500">Thanks — your message has been sent!</p>
         )}
         {status === 'error' && (
-          <p className="text-sm text-red-600 dark:text-red-400">
-            Something went wrong. Please email me directly instead.
-          </p>
+          <p className="text-sm text-red-500">Something went wrong. Please email me directly instead.</p>
         )}
       </form>
     </Section>

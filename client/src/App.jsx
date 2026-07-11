@@ -6,13 +6,13 @@ import Contact from './components/Contact'
 
 export default function App() {
   return (
-    <div className="min-h-screen bg-white dark:bg-slate-950">
-      <Hero />
-      <About />
-      <Experience />
-      <Projects />
-      <Contact />
-      <footer className="border-t border-slate-200 dark:border-slate-800 py-8 text-center text-sm text-slate-500">
+    <div className="min-h-screen">
+      <Hero variant="light" />
+      <About variant="dark" />
+      <Experience variant="light" />
+      <Projects variant="dark" />
+      <Contact variant="light" />
+      <footer className="section-dark py-8 text-center text-sm">
         Built with the MERN stack.
       </footer>
     </div>
