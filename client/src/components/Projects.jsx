@@ -1,11 +1,14 @@
 import { useEffect, useState } from 'react'
 import Section from './Section'
 import { fallbackProjects } from '../data/profile'
+import { useTheme } from '../context/ThemeContext'
+import { accents } from '../theme/accents'
 
 const API_URL = import.meta.env.VITE_API_URL || ''
-const ACCENT = '#fbbf24'
 
 export default function Projects() {
+  const { theme } = useTheme()
+  const ACCENT = accents.amber[theme].base
   const [projects, setProjects] = useState(fallbackProjects)
 
   useEffect(() => {

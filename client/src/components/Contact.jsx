@@ -1,11 +1,14 @@
 import { useState } from 'react'
 import Section from './Section'
 import { profile } from '../data/profile'
+import { useTheme } from '../context/ThemeContext'
+import { accents } from '../theme/accents'
 
 const API_URL = import.meta.env.VITE_API_URL || ''
-const ACCENT = '#34d399'
 
 export default function Contact() {
+  const { theme } = useTheme()
+  const { base: ACCENT, border, text: btnText } = accents.emerald[theme]
   const [form, setForm] = useState({ name: '', email: '', message: '' })
   const [status, setStatus] = useState('idle') // idle | sending | sent | error
 
@@ -76,7 +79,7 @@ export default function Contact() {
           type="submit"
           disabled={status === 'sending'}
           className="btn-game border-b-4 px-5 py-2.5 rounded-lg text-sm font-bold disabled:opacity-50"
-          style={{ backgroundColor: ACCENT, color: '#0f1117', borderColor: '#059669' }}
+          style={{ backgroundColor: ACCENT, color: btnText, borderColor: border }}
         >
           {status === 'sending' ? 'Sending…' : 'Send message'}
         </button>

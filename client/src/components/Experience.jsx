@@ -1,9 +1,12 @@
 import Section from './Section'
 import { profile } from '../data/profile'
-
-const ACCENT = '#a78bfa'
+import { useTheme } from '../context/ThemeContext'
+import { accents } from '../theme/accents'
 
 export default function Experience() {
+  const { theme } = useTheme()
+  const ACCENT = accents.violet[theme].base
+
   return (
     <Section id="experience" title="Experience" index={2} accent={ACCENT}>
       <div className="space-y-8">

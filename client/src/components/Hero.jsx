@@ -1,8 +1,11 @@
 import { profile } from '../data/profile'
-
-const ACCENT = '#5eead4'
+import { useTheme } from '../context/ThemeContext'
+import { accents } from '../theme/accents'
 
 export default function Hero() {
+  const { theme } = useTheme()
+  const { base: ACCENT, border, text: btnText } = accents.teal[theme]
+
   return (
     <header className="border-b px-6 py-24 text-center" style={{ borderColor: 'var(--panel-border)' }}>
       <div className="mx-auto max-w-3xl">
@@ -31,7 +34,7 @@ export default function Hero() {
           <a
             href={`mailto:${profile.email}`}
             className="btn-game border-b-4 px-5 py-2.5 rounded-lg text-sm font-bold"
-            style={{ backgroundColor: ACCENT, color: '#0f1117', borderColor: '#0d9488' }}
+            style={{ backgroundColor: ACCENT, color: btnText, borderColor: border }}
           >
             Contact Me
           </a>

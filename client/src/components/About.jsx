@@ -1,9 +1,12 @@
 import Section from './Section'
 import { profile } from '../data/profile'
-
-const ACCENT = '#5eead4'
+import { useTheme } from '../context/ThemeContext'
+import { accents } from '../theme/accents'
 
 export default function About() {
+  const { theme } = useTheme()
+  const ACCENT = accents.teal[theme].base
+
   return (
     <Section id="about" title="Profile Summary" index={1} accent={ACCENT}>
       <p className="leading-relaxed" style={{ color: 'var(--muted)' }}>{profile.about}</p>

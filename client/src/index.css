@@ -1,12 +1,24 @@
 @import "tailwindcss";
 
-:root {
+:root,
+:root[data-theme='dark'] {
   --bg: #0f1117;
   --panel-border: #232733;
   --text: #f1f1f4;
   --muted: #9aa0ae;
   --pill-bg: #1b1f2a;
   --pill-text: #c7ccd6;
+  --dot: #1c202b;
+}
+
+:root[data-theme='light'] {
+  --bg: #f7f6f3;
+  --panel-border: #dedbd3;
+  --text: #1a1a1a;
+  --muted: #5c5c5c;
+  --pill-bg: #ece9e2;
+  --pill-text: #3a3a3a;
+  --dot: #e7e4dc;
 }
 
 body {
@@ -14,8 +26,9 @@ body {
   background-color: var(--bg);
   color: var(--text);
   font-family: 'JetBrains Mono', ui-monospace, monospace;
-  background-image: radial-gradient(circle, #1c202b 1px, transparent 1px);
+  background-image: radial-gradient(circle, var(--dot) 1px, transparent 1px);
   background-size: 22px 22px;
+  transition: background-color 0.15s ease, color 0.15s ease;
 }
 
 .font-display {
